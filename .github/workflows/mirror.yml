@@ -1,0 +1,24 @@
+name: Mirror models
+
+# By hand (Run workflow) or when models.json changes: fetch each model from its pinned source, check the SHA-256,
+# upload it to the release "models-v1" and check the public copy again. Runs on GitHub's free runners for
+# public repositories; only this job writes to the release.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [models.json, mirror.sh, .github/workflows/mirror.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Copy, check and publish the models
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash mirror.sh
