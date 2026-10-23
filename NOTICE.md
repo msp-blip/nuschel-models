@@ -7,3 +7,4 @@ Speech and language models for Nuschel, a fallback source for company networks t
 - `gemma-4-E2B-it-Q4_0.gguf` (in two parts, joined by the app): Gemma 4 E2B (Google), GGUF by ggml-org, Apache License 2.0
 
 The files are unchanged copies of the sources listed in `models.json`.
+- `parakeet-tdt-0.6b-v3-encoder.int8.onnx`: encoder of NVIDIA Parakeet TDT 0.6B v3 (CC-BY-4.0), int8 ONNX export by the sherpa-onnx project (Apache-2.0)
